@@ -1,10 +1,14 @@
-import Home from "../../Home/Home";
+import { Outlet } from "react-router";
+import Header from "../Header/Header";
 
 const Root = () => {
   return (
     <div>
-      <h1 className="bg-green-500 text-center text-white">I am Root</h1>
-      <Home></Home>
+      <h1 className="bg-lime-300 text-2xl font-extrabold text-center text-[#656DFE] py-5">
+        User Blood Groupe and Contact Data Collection Booth
+      </h1>
+      <Header></Header>
+      <Outlet></Outlet>
     </div>
   );
 };
