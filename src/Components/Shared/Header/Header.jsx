@@ -2,8 +2,8 @@ import { Link, NavLink } from "react-router";
 
 const Header = () => {
   return (
-    <div className="bg-orange-100">
-      <div className="container mx-auto py-6">
+    <div className="bg-orange-50">
+      <div className="container mx-auto py-4">
         <div className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
@@ -51,7 +51,7 @@ const Header = () => {
                 </NavLink>
               </ul>
             </div>
-            <Link to={"/"} className="text-2xl text-[#001001] font-extrabold">
+            <Link to={"/"} className="text-3xl text-[#001001] font-extrabold">
               Blood Campaign
             </Link>
           </div>
@@ -78,7 +78,7 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <a className="btn">Log In</a>
+            <Link className="btn btn-primary text-white px-10">Log In</Link>
           </div>
         </div>
       </div>
