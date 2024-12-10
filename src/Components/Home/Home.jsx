@@ -1,6 +1,11 @@
 const Home = () => {
   const bloodGroup = ["A +", "A -", "B +", "B -", "AB +", "AB -", "O +", "O -"];
 
+  const handleSubmitBloodData = (e) => {
+    console.log(e);
+    e.preventDefault();
+  };
+
   return (
     <div className="container mx-auto">
       <div className="p-8 rounded-3xl mt-10 shadow-2xl bg-white">
@@ -8,7 +13,7 @@ const Home = () => {
           Enter your Information Here
         </h1>
         <div className="text-center w-3/4 mx-auto">
-          <form>
+          <form onSubmit={handleSubmitBloodData}>
             <div className="grid grid-cols-2 gap-10 mb-4">
               <input
                 type="text"
@@ -52,23 +57,30 @@ const Home = () => {
               />
             </div>
             <div className="grid grid-cols-2 gap-10 mb-4">
-              <select name="gender" className="select select-bordered w-full">
-                <option disabled selected>
+              <select
+                name="gender"
+                defaultValue="Gender"
+                className="select select-bordered w-full"
+              >
+                <option value={"Gender"} disabled>
                   Gender
                 </option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Third Gender</option>
+                <option value={"Male"}>Male</option>
+                <option value={"Female"}>Female</option>
+                <option value={"Third Gender"}>Third Gender</option>
               </select>
               <select
                 name="bloodgroup"
                 className="select select-bordered w-full"
+                defaultValue={"Blood Group"}
               >
-                <option disabled selected>
+                <option value={"Blood Group"} disabled>
                   Blood Group
                 </option>
                 {bloodGroup.map((ele, idx) => (
-                  <option key={idx}>{ele}</option>
+                  <option value={ele} key={idx}>
+                    {ele}
+                  </option>
                 ))}
               </select>
             </div>
@@ -87,13 +99,15 @@ const Home = () => {
             <div className="flex items-center justify-center py-3">
               <input
                 type="checkbox"
-                defaultChecked
                 className="checkbox border-orange-400 [--chkbg:theme(colors.indigo.600)] [--chkfg:orange] checked:border-indigo-800"
               />{" "}
               <span className="ms-5">Agree with our term & condition</span>
             </div>
             <div>
-              <button className="btn w-1/2 text-white mt-5 btn-primary">
+              <button
+                type="submit"
+                className="btn w-1/2 text-white mt-5 btn-primary"
+              >
                 Submit your Blood Data
               </button>
             </div>
