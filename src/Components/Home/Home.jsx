@@ -2,8 +2,33 @@ const Home = () => {
   const bloodGroup = ["A +", "A -", "B +", "B -", "AB +", "AB -", "O +", "O -"];
 
   const handleSubmitBloodData = (e) => {
-    console.log(e);
     e.preventDefault();
+    const target = e.target;
+    const name = target.username.value;
+    const email = target.email.value;
+    const phoneNumber = target.phonenumber.value;
+    const weight = target.weight.value;
+    const height = target.height.value;
+    const age = target.age.value;
+    const gender = target.gender.value;
+    const bloodGroup = target.bloodgroup.value;
+    const birthDate = target.dateofbirth.value;
+    const address = target.address.value;
+    const termCondition = target.condition.checked;
+    console.log(
+      name,
+      email,
+      phoneNumber,
+      weight,
+      height,
+      age,
+      gender,
+      bloodGroup,
+      birthDate,
+      termCondition,
+      address
+    );
+    e.target.reset();
   };
 
   return (
@@ -94,10 +119,12 @@ const Home = () => {
               <textarea
                 className="textarea textarea-bordered w-full resize-none h-5"
                 placeholder="Enter your address"
+                name="address"
               ></textarea>
             </div>
             <div className="flex items-center justify-center py-3">
               <input
+                name="condition"
                 type="checkbox"
                 className="checkbox border-orange-400 [--chkbg:theme(colors.indigo.600)] [--chkfg:orange] checked:border-indigo-800"
               />{" "}
