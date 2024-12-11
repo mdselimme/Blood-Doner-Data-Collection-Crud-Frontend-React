@@ -78,7 +78,7 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <Link className="btn btn-primary text-white px-10">Log In</Link>
+            <Link to={"/login"} className="btn btn-primary text-white px-10">Log In</Link>
           </div>
         </div>
       </div>
