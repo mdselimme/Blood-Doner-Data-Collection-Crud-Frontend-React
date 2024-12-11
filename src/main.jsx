@@ -22,6 +22,14 @@ createRoot(document.getElementById("root")).render(
             path="/userscontactdata"
             element={<UsersContactData></UsersContactData>}
           ></Route>
+          <Route
+            path="/login"
+            element={ }
+          ></Route>
+          <Route
+            path="/register"
+            element={ }
+          ></Route>
         </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
