@@ -1,5 +1,14 @@
 const EnterBloodInformation = () => {
-  const bloodGroup = ["A +", "A -", "B +", "B -", "AB +", "AB -", "O +", "O -"];
+  const bloodGroup = [
+    "A(+)",
+    "A(-)",
+    "B(+)",
+    "B(-)",
+    "AB(+)",
+    "AB(-)",
+    "O(+)",
+    "O(-)",
+  ];
 
   const handleSubmitBloodData = (e) => {
     e.preventDefault();
