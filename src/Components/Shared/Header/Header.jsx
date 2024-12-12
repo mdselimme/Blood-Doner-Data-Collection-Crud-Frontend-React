@@ -65,20 +65,28 @@ const Header = () => {
               </NavLink>
               <NavLink
                 className="text-base font-normal px-5 text-[#001001]"
+                to={"/entry_blood_data"}
+              >
+                Enter blood Information
+              </NavLink>
+              <NavLink
+                className="text-base font-normal px-5 text-[#001001]"
                 to={"/availableblood"}
               >
                 Available Blood
               </NavLink>
               <NavLink
                 className="text-base font-normal px-5 text-[#001001]"
-                to={"/userscontactdata"}
+                to={"/users_contact_data"}
               >
                 Users Contact Data
               </NavLink>
             </ul>
           </div>
           <div className="navbar-end">
-            <Link to={"/login"} className="btn btn-primary text-white px-10">Log In</Link>
+            <Link to={"/login"} className="btn btn-primary text-white px-10">
+              Log In
+            </Link>
           </div>
         </div>
       </div>

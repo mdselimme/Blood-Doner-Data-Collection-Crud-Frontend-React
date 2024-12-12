@@ -9,6 +9,7 @@ import UsersContactData from "./Components/Pages/UsersContactData/UsersContactDa
 import NotFound from "./Components/Pages/NotFound/NotFound.jsx";
 import Login from "./Components/Pages/Login/Login.jsx";
 import Register from "./Components/Pages/Register/Register.jsx";
+import EnterBloodInformation from "./Components/Pages/EnterBloodInformation/EnterBloodInformation.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,17 +22,15 @@ createRoot(document.getElementById("root")).render(
             element={<AvailableBlood></AvailableBlood>}
           ></Route>
           <Route
-            path="/userscontactdata"
+            path="/entry_blood_data"
+            element={<EnterBloodInformation></EnterBloodInformation>}
+          ></Route>
+          <Route
+            path="/users_contact_data"
             element={<UsersContactData></UsersContactData>}
           ></Route>
-          <Route
-            path="/login"
-            element={<Login></Login>}
-          ></Route>
-          <Route
-            path="/register"
-            element={<Register></Register>}
-          ></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/register" element={<Register></Register>}></Route>
         </Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
