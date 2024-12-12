@@ -67,7 +67,8 @@ const Header = () => {
               to={"/"}
               className="text-xl md:text-3xl text-[#001001] font-extrabold"
             >
-              Blood<span className="text-primary">Campaign</span>
+              Blood
+              <span className="text-primary">Campaign</span>
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
