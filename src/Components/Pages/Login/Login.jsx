@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 
 
 const Login = () => {
@@ -46,6 +47,7 @@ const Login = () => {
                             </button>
                         </div>
                     </form>
+                    <div className="divider">No Account ? Go to <Link to={'/register_account'}>Register</Link></div>
                 </div>
             </div>
         </div>
