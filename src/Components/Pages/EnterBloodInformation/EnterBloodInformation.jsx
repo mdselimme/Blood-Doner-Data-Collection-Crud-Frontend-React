@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const EnterBloodInformation = () => {
   const bloodGroup = [
     "A(+)",
@@ -24,19 +26,40 @@ const EnterBloodInformation = () => {
     const birthDate = target.dateofbirth.value;
     const address = target.address.value;
     const termCondition = target.condition.checked;
-    console.log(
+
+    const donorsData = {
       name,
       email,
-      phoneNumber,
+      phone: phoneNumber,
       weight,
       height,
       age,
       gender,
-      bloodGroup,
-      birthDate,
+      blood_group: bloodGroup,
+      dob: birthDate,
       termCondition,
-      address
-    );
+      address,
+    };
+
+    fetch("http://localhost:5000/donors", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(donorsData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Your Data is Saved",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      })
+      .catch((error) => console.log(error.message));
+
     e.target.reset();
   };
   return (
@@ -77,7 +100,7 @@ const EnterBloodInformation = () => {
             </div>
             <div className="grid grid-cols-2 gap-10 mb-4">
               <input
-                type="number"
+                type="text"
                 name="height"
                 placeholder="Enter your Height"
                 className="input input-bordered w-full"
