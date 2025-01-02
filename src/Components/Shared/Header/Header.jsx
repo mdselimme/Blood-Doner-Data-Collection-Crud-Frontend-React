@@ -1,4 +1,5 @@
-import { Link, NavLink } from "react-router";
+import { Link } from "react-router";
+import NavMenu from "../NavMenu/NavMenu";
 
 const Header = () => {
   return (
@@ -31,36 +32,7 @@ const Header = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-4 shadow"
               >
-                <NavLink
-                  className="text-[0.7rem] mb-5 md:mb-0 md:text-base font-normal px-5 text-[#001001]"
-                  to={"/"}
-                >
-                  Home
-                </NavLink>
-                <NavLink
-                  className="text-[0.7rem] mb-5 md:mb-0 md:text-base font-normal px-5 text-[#001001]"
-                  to={"/entry_blood_data"}
-                >
-                  Enter blood Information
-                </NavLink>
-                <NavLink
-                  className="text-[0.7rem] mb-5 md:mb-0 md:text-base font-normal px-5 text-[#001001]"
-                  to={"/available_blood"}
-                >
-                  Available Blood
-                </NavLink>
-                <NavLink
-                  className="text-[0.7rem] mb-5 md:mb-0 md:text-base font-normal px-5 text-[#001001]"
-                  to={"/users_contact_data"}
-                >
-                  Users Contact Data
-                </NavLink>
-                <NavLink
-                  className="text-[0.7rem] md:text-base font-normal px-5 text-[#001001]"
-                  to={"/contact_us"}
-                >
-                  Contact Us
-                </NavLink>
+                <NavMenu></NavMenu>
               </ul>
             </div>
             <Link
@@ -73,36 +45,7 @@ const Header = () => {
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
-              <NavLink
-                className="text-base font-normal px-5 text-[#001001]"
-                to={"/"}
-              >
-                Home
-              </NavLink>
-              <NavLink
-                className="text-base font-normal px-5 text-[#001001]"
-                to={"/entry_blood_data"}
-              >
-                Enter blood Information
-              </NavLink>
-              <NavLink
-                className="text-base font-normal px-5 text-[#001001]"
-                to={"/available_blood"}
-              >
-                Available Blood
-              </NavLink>
-              <NavLink
-                className="text-base font-normal px-5 text-[#001001]"
-                to={"/users_contact_data"}
-              >
-                Users Contact Data
-              </NavLink>
-              <NavLink
-                className="text-base font-normal px-5 text-[#001001]"
-                to={"/contact_us"}
-              >
-                Contact Us
-              </NavLink>
+              <NavMenu></NavMenu>
             </ul>
           </div>
           <div className="navbar-end">
