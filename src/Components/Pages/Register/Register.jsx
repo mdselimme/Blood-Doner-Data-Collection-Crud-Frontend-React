@@ -1,10 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../Shared/AuthProvider/AuthProvider";
 import axios from "axios";
+import { FaRegEye } from "react-icons/fa";
+import { IoMdEyeOff } from "react-icons/io";
+import useAuth from "../../Shared/useAuth/useAuth";
 
 const Register = () => {
-  const { handleCreateAccount, updateProfile, auth } = useContext(AuthContext);
+  const { handleCreateAccount, updateProfile, auth } = useAuth();
+  const [showpass, setShowPass] = useState(false);
+
+  console.log(showpass);
 
   // Register account with email and password and update profile name
   const handleRegisterAccount = (e) => {
@@ -37,7 +43,9 @@ const Register = () => {
             axios
               .post("http://localhost:5000/users", userData)
               .then((response) => {
-                console.log(response.data);
+                if (response.data.insertedId) {
+                  console.log("Data Inserted");
+                }
               })
               .catch((error) => {
                 console.log(error.code, error.message);
@@ -76,13 +84,25 @@ const Register = () => {
                 className="input input-bordered w-full"
                 required
               />
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                className="input input-bordered w-full"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showpass ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter your password"
+                  className="input input-bordered w-full"
+                  required
+                />
+                <span
+                  onClick={() => setShowPass(!showpass)}
+                  className="absolute top-3 right-6"
+                >
+                  {showpass ? (
+                    <IoMdEyeOff className="text-2xl" />
+                  ) : (
+                    <FaRegEye className="text-xl" />
+                  )}
+                </span>
+              </div>
             </div>
 
             <div>

@@ -1,6 +1,11 @@
+import { useState } from "react";
+import { FaRegEye } from "react-icons/fa";
+import { IoMdEyeOff } from "react-icons/io";
 import { Link } from "react-router";
 
 const Login = () => {
+  const [showpass, setShowPass] = useState(false);
+
   const handleLogIn = (e) => {
     e.preventDefault();
     const target = e.target;
@@ -25,12 +30,25 @@ const Login = () => {
                 placeholder="Enter your email"
                 className="input input-bordered w-full"
               />
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                className="input input-bordered w-full"
-              />
+              <div className="relative">
+                <input
+                  type={showpass ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter your password"
+                  className="input input-bordered w-full"
+                  required
+                />
+                <span
+                  onClick={() => setShowPass(!showpass)}
+                  className="absolute top-3 right-6"
+                >
+                  {showpass ? (
+                    <IoMdEyeOff className="text-2xl" />
+                  ) : (
+                    <FaRegEye className="text-xl" />
+                  )}
+                </span>
+              </div>
             </div>
 
             <div>
