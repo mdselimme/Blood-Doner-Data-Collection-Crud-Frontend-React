@@ -2,8 +2,10 @@ import { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import { Link } from "react-router";
+import useAuth from "../../Shared/useAuth/useAuth";
 
 const Login = () => {
+  const { handleLogInAccount } = useAuth();
   const [showpass, setShowPass] = useState(false);
 
   const handleLogIn = (e) => {
@@ -11,6 +13,12 @@ const Login = () => {
     const target = e.target;
     const email = target.email.value;
     const password = target.password.value;
+
+    handleLogInAccount(email, password)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => console.log(error.code, error.message));
 
     console.log(email, password);
     e.target.reset();

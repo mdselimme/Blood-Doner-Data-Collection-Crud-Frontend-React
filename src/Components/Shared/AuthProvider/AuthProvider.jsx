@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   updateProfile,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -17,6 +18,10 @@ const AuthProvider = ({ children }) => {
   // Creat account function with email and password
   const handleCreateAccount = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const handleLogInAccount = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   // State change and store logged in users data
@@ -35,6 +40,7 @@ const AuthProvider = ({ children }) => {
     handleCreateAccount,
     auth,
     updateProfile,
+    handleLogInAccount,
   };
 
   return (
