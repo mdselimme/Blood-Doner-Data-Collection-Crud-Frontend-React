@@ -11,7 +11,13 @@ const Register = () => {
     const name = target.name.value;
     const email = target.email.value;
     const password = target.password.value;
-    handleCreateAccount();
+    handleCreateAccount(email, password)
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+      });
     console.log(name, email, password);
     e.target.reset();
   };
