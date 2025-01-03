@@ -3,17 +3,34 @@ import { Link } from "react-router";
 import { AuthContext } from "../../Shared/AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { handleCreateAccount } = useContext(AuthContext);
+  const { handleCreateAccount, updateProfile, auth } = useContext(AuthContext);
 
+  // Register account with email and password and update profile name
   const handleRegisterAccount = (e) => {
     e.preventDefault();
+    // Find value from input
     const target = e.target;
     const name = target.name.value;
     const email = target.email.value;
     const password = target.password.value;
+
+    // Create Account Function
     handleCreateAccount(email, password)
-      .then((user) => {
-        console.log(user);
+      // create account
+      .then((result) => {
+        console.log(result.user);
+        console.log(auth.currentUser);
+        // Update profile name
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {
+            // Profile updated!
+            console.log("Profile displayname updated");
+          })
+          .catch((error) => {
+            console.log(error.code, error.message);
+          });
       })
       .catch((error) => {
         console.log(error.code, error.message);
