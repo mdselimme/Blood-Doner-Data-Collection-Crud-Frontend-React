@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../Shared/AuthProvider/AuthProvider";
+import axios from "axios";
 
 const Register = () => {
   const { handleCreateAccount, updateProfile, auth } = useContext(AuthContext);
@@ -26,7 +27,21 @@ const Register = () => {
         })
           .then(() => {
             // Profile updated!
-            console.log("Profile displayname updated");
+            // users data object
+            const userData = {
+              name: auth.currentUser.displayName,
+              email: auth.currentUser.email,
+              lastLogInTime: auth.currentUser.metadata.lastSignInTime,
+            };
+            // Axios post method for send to data on serverside
+            axios
+              .post("http://localhost:5000/users", userData)
+              .then((response) => {
+                console.log(response.data);
+              })
+              .catch((error) => {
+                console.log(error.code, error.message);
+              });
           })
           .catch((error) => {
             console.log(error.code, error.message);
