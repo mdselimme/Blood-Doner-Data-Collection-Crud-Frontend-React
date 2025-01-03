@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   updateProfile,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -20,14 +21,20 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  // Log in with email and password
   const handleLogInAccount = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const signOutUser = () => {
+    return signOut(auth);
   };
 
   // State change and store logged in users data
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      console.log(user);
     });
     return () => {
       unsubscribed();
@@ -36,6 +43,7 @@ const AuthProvider = ({ children }) => {
 
   // Auth Context all data provider
   const authData = {
+    signOutUser,
     user,
     handleCreateAccount,
     auth,

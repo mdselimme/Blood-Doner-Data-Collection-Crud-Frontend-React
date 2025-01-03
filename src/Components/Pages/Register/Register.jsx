@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
-import { AuthContext } from "../../Shared/AuthProvider/AuthProvider";
+
 import axios from "axios";
 import { FaRegEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
@@ -9,8 +9,6 @@ import useAuth from "../../Shared/useAuth/useAuth";
 const Register = () => {
   const { handleCreateAccount, updateProfile, auth } = useAuth();
   const [showpass, setShowPass] = useState(false);
-
-  console.log(showpass);
 
   // Register account with email and password and update profile name
   const handleRegisterAccount = (e) => {
@@ -27,9 +25,11 @@ const Register = () => {
       .then((result) => {
         console.log(result.user);
         console.log(auth.currentUser);
+        const img = "https://i.ibb.co.com/0mYHhWF/dummy-profile.webp";
         // Update profile name
         updateProfile(auth.currentUser, {
           displayName: name,
+          photoURL: img,
         })
           .then(() => {
             // Profile updated!
@@ -64,10 +64,10 @@ const Register = () => {
   return (
     <div className="container mx-auto">
       <div className="p-8 rounded-3xl mt-10">
-        <h1 className="text-center py-8 text-3xl font-bold text-[#1B2247]">
-          Register Account
-        </h1>
-        <div className="text-center w-2/5 mx-auto">
+        <div className="text-center w-2/5 mx-auto shadow-2xl bg-white p-10 rounded-2xl">
+          <h1 className="text-center py-8 text-3xl font-bold text-[#1B2247]">
+            Register Account
+          </h1>
           <form onSubmit={handleRegisterAccount}>
             <div className="grid grid-cols-1 gap-10 mb-4">
               <input

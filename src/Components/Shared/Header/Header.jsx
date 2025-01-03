@@ -1,7 +1,21 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import NavMenu from "../NavMenu/NavMenu";
+import useAuth from "../useAuth/useAuth";
 
 const Header = () => {
+  const { user, signOutUser } = useAuth();
+  const navigate = useNavigate();
+
+  // log Out User function
+  const logOutUser = () => {
+    signOutUser()
+      .then((result) => {
+        result;
+        navigate("/");
+      })
+      .catch((error) => console.log(error.code, error.message));
+  };
+
   return (
     <div className="bg-orange-50">
       <div className="container mx-auto py-2 md:py-4">
@@ -49,12 +63,35 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <Link
-              to={"/log_in"}
-              className="bg-primary text-white px-5 text-[0.7rem] rounded md:text-base py-2 md:py-3 md:px-8"
-            >
-              Log In
-            </Link>
+            {user ? (
+              <div className="flex items-center">
+                <div className="tooltip" data-tip={user?.displayName}>
+                  <div className="avatar">
+                    <div className="ring-primary mr-3 ring-offset-base-100 w-10 rounded-full ring ring-offset-1">
+                      <img
+                        className="image-full"
+                        src={user?.photoURL}
+                        alt="profile-image"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  className="bg-primary text-white px-5 text-[0.7rem] rounded md:text-base py-2 md:py-3 md:px-8"
+                  onClick={logOutUser}
+                >
+                  log out
+                </button>
+              </div>
+            ) : (
+              <Link
+                to={"/log_in"}
+                className="bg-primary text-white px-5 text-[0.7rem] rounded md:text-base py-2 md:py-3 md:px-8"
+              >
+                Log In
+              </Link>
+            )}
           </div>
         </div>
       </div>

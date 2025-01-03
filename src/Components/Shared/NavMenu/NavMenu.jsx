@@ -1,6 +1,9 @@
 import { NavLink } from "react-router";
+import useAuth from "../useAuth/useAuth";
 
 const NavMenu = () => {
+  const { user } = useAuth();
+
   return (
     <>
       <NavLink
@@ -9,12 +12,14 @@ const NavMenu = () => {
       >
         Home
       </NavLink>
-      <NavLink
-        className="text-[0.7rem] mb-5 md:mb-0 md:text-base font-normal px-5 text-[#001001]"
-        to={"/entry_blood_data"}
-      >
-        Enter blood Information
-      </NavLink>
+      {user && (
+        <NavLink
+          className="text-[0.7rem] mb-5 md:mb-0 md:text-base font-normal px-5 text-[#001001]"
+          to={"/entry_blood_data"}
+        >
+          Enter blood Information
+        </NavLink>
+      )}
       <NavLink
         className="text-[0.7rem] mb-5 md:mb-0 md:text-base font-normal px-5 text-[#001001]"
         to={"/available_blood"}
