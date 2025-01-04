@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { FaRegEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../Shared/useAuth/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { handleLogInAccount } = useAuth();
+  const { handleLogInAccount, user } = useAuth();
   const [showpass, setShowPass] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
   // Log in function
   const handleLogIn = (e) => {
     e.preventDefault();
@@ -19,7 +22,15 @@ const Login = () => {
     handleLogInAccount(email, password)
       .then((result) => {
         console.log(result);
-        navigate("/");
+        // navigate route
+        navigate(location?.state ? location?.state : "/");
+        if (result) {
+          Swal.fire({
+            title: "Log In Successfully",
+            icon: "success",
+            draggable: true,
+          });
+        }
       })
       .catch((error) => console.log(error.code, error.message));
 

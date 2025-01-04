@@ -12,6 +12,7 @@ import Register from "./Components/Pages/Register/Register.jsx";
 import EnterBloodInformation from "./Components/Pages/EnterBloodInformation/EnterBloodInformation.jsx";
 import ContactUs from "./Components/Pages/ContactUs/ContactUs.jsx";
 import AuthProvider from "./Components/Shared/AuthProvider/AuthProvider.jsx";
+import SecureRoute from "./Components/Shared/SecureRoute/SecureRoute.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -26,7 +27,11 @@ createRoot(document.getElementById("root")).render(
             ></Route>
             <Route
               path="/entry_blood_data"
-              element={<EnterBloodInformation></EnterBloodInformation>}
+              element={
+                <SecureRoute>
+                  <EnterBloodInformation></EnterBloodInformation>
+                </SecureRoute>
+              }
             ></Route>
             <Route
               path="/users_contact_data"
