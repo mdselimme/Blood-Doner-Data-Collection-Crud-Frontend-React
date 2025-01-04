@@ -4,9 +4,10 @@ import { IoMdEyeOff } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../Shared/useAuth/useAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
-  const { handleLogInAccount, user } = useAuth();
+  const { handleLogInAccount } = useAuth();
   const [showpass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,15 +22,31 @@ const Login = () => {
     // log in function call
     handleLogInAccount(email, password)
       .then((result) => {
-        console.log(result);
+        console.log(result.user);
         // navigate route
         navigate(location?.state ? location?.state : "/");
-        if (result) {
+        if (result.user) {
+          // show alert after login
           Swal.fire({
             title: "Log In Successfully",
             icon: "success",
             draggable: true,
           });
+          // update login data
+          const updataLoginTimeData = {
+            email: result.user.email,
+            lastLogInTime: result.user.metadata.lastSignInTime,
+          };
+          console.log(updataLoginTimeData);
+          // Axios put method for update last log in time data
+          axios
+            .put("http://localhost:5000/users", updataLoginTimeData)
+            .then((result) => {
+              console.log(result.data);
+            })
+            .catch((error) => {
+              console.log(error.code, error.message);
+            });
         }
       })
       .catch((error) => console.log(error.code, error.message));

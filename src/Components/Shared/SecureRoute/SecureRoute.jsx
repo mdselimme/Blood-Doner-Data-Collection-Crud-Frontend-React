@@ -4,7 +4,6 @@ import useAuth from "../useAuth/useAuth";
 const SecureRoute = ({ children }) => {
   const { user } = useAuth();
   const location = useLocation();
-  console.log(location);
 
   if (user) {
     return children;

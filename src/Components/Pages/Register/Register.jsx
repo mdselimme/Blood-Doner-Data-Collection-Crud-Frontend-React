@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 import axios from "axios";
 import { FaRegEye } from "react-icons/fa";
@@ -9,6 +9,8 @@ import useAuth from "../../Shared/useAuth/useAuth";
 const Register = () => {
   const { handleCreateAccount, updateProfile, auth } = useAuth();
   const [showpass, setShowPass] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Register account with email and password and update profile name
   const handleRegisterAccount = (e) => {
@@ -23,8 +25,9 @@ const Register = () => {
     handleCreateAccount(email, password)
       // create account
       .then((result) => {
-        console.log(result.user);
-        console.log(auth.currentUser);
+        result.user;
+        // navigate the route
+        navigate(location?.state ? location?.state : "/");
         const img = "https://i.ibb.co.com/0mYHhWF/dummy-profile.webp";
         // Update profile name
         updateProfile(auth.currentUser, {
