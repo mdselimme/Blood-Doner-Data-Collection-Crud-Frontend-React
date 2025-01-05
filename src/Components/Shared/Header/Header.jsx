@@ -87,7 +87,7 @@ const Header = () => {
             ) : (
               <Link
                 to={"/log_in"}
-                className="bg-primary text-white px-5 text-[0.7rem] rounded md:text-base py-2 md:py-3 md:px-8"
+                className="bg-primary hover:bg-white hover:text-black text-white font-medium border-2 border-primary px-5 text-[0.7rem] rounded-full md:text-base py-2 md:py-3 md:px-8"
               >
                 Log In
               </Link>
