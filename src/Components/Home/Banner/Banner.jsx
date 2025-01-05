@@ -21,7 +21,7 @@ const Banner = () => {
           dynamicBullets: true,
         }}
         modules={[Pagination, Autoplay]}
-        // autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 3000 }}
         className="mySwiper"
       >
         {/* Slider Number 1  */}

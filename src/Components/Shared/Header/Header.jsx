@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router";
 import NavMenu from "../NavMenu/NavMenu";
 import useAuth from "../useAuth/useAuth";
+import { IoLogOutOutline } from "react-icons/io5";
+import { IoMdLogIn } from "react-icons/io";
 
 const Header = () => {
   const { user, signOutUser } = useAuth();
@@ -78,18 +80,19 @@ const Header = () => {
                 </div>
 
                 <button
-                  className="bg-primary text-white px-5 text-[0.7rem] rounded md:text-base py-2 md:py-3 md:px-8"
+                  className="bg-primary hover:bg-white hover:text-black text-white font-medium border-2 border-primary px-5 flex items-center text-[0.7rem] rounded-full md:text-base py-2 md:py-2 md:px-6"
                   onClick={logOutUser}
                 >
-                  log out
+                  <span className="mr-2 capitalize"> log out </span>{" "}
+                  <IoLogOutOutline />
                 </button>
               </div>
             ) : (
               <Link
                 to={"/log_in"}
-                className="bg-primary hover:bg-white hover:text-black text-white font-medium border-2 border-primary px-5 text-[0.7rem] rounded-full md:text-base py-2 md:py-3 md:px-8"
+                className="bg-primary hover:bg-white hover:text-black text-white font-medium border-2 border-primary px-5 flex items-center text-[0.7rem] rounded-full md:text-base py-2 md:py-2 md:px-6"
               >
-                Log In
+                <span className="mr-2 capitalize">Log In</span> <IoMdLogIn />
               </Link>
             )}
           </div>
