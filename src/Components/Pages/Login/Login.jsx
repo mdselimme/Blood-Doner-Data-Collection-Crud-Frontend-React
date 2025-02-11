@@ -47,7 +47,7 @@ const Login = () => {
                             </button>
                         </div>
                     </form>
-                    <div className="divider">No Account ? Go to <Link to={'/register_account'}>Register</Link></div>
+                    <div className="divider">No Account ? Go to <Link to={'/register_account'}>Register Account</Link></div>
                 </div>
             </div>
         </div>
